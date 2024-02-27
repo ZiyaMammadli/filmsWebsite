@@ -1,3 +1,27 @@
 #info-input{
     display: none;
 }
+.buttons{
+    margin-top:100;
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+  }
+  .buttons button{
+    border:none;
+    padding:0.4rem 1.2rem;
+    background-color:purple;
+    color:white;
+    border-radius:5px;
+    cursor:pointer
+  }
+  
+  #page-number{
+    border:none;
+    text-align:center;
+    width:3rem;
+    border-radius:5px;
+  }
+  #page-number:focus{
+    outline:none;
+  }
