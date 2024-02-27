@@ -17,7 +17,7 @@ function Getdata(Id){
                                             <p class="card-text">${value.summary}</p>
                                             <ul>
                                                 <li>    
-                                                <b>IMDB Point: </b>${value.average}
+                                                <b>IMDB Point: </b>${value.rating.average}
                                                 </li>
                                                 <li>
                                                 <b>Language: </b>${value.language}

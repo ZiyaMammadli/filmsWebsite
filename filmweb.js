@@ -36,19 +36,38 @@ GetCards()
 
 let Form=document.getElementById("form");
 let SearchInput=document.getElementById("searchInput");
+let formParent=document.getElementById("navbarSupportedContent")
+let InfoInput=document.getElementById("info-input")
 
-Form.addEventListener("submit",AddCard)
+Form.addEventListener("submit",ShowCard)
 
-function AddCard(e){
-  e.preventDefault()
+SearchInput.addEventListener("keyup",KeyExtention)
+let count=0;
+function KeyExtention(){
   const inputValue=SearchInput.value.trim()
+  count++
+  // console.log(count);
+  if(count<=3){
+    InfoInput.setAttribute("style","display : block")  
+  }else{
+    InfoInput.setAttribute("style","display : none")  
+  }
+  if(inputValue==""){
+    count=0
+  }
+}
+
+function ShowCard(e){
+  e.preventDefault()
+  const inputValue=SearchInput.value.trim().toLowerCase()
   fetch(`https://api.tvmaze.com/shows`)
     .then(response=>response.json())
     .then((datas)=>{
+      card.innerHTML=""
         datas.forEach(data => {
-          console.log(inputValue.lentgh);
-          if(inputValue.toLowerCase()==data.name.toLowerCase()){
-            card.innerHTML=`       <div class="col-3">
+          if(data.name.toLowerCase().trim().includes(inputValue)){
+            
+            card.innerHTML+=`       <div class="col-3">
             <div class="card" style="width: 18rem; margin-top: 100px;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
@@ -73,4 +92,5 @@ function AddCard(e){
           }
         });
     })
+    inputValue.innerHTML=""
 }
