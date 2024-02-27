@@ -1,12 +1,12 @@
-let card=document.getElementById("main")
-let button1=document.getElementById("btn1")
-let button2=document.getElementById("btn2")
-function GetCards(){
-    fetch(`https://api.tvmaze.com/shows`)
-    .then(response=>response.json())
-    .then((datas)=>{
-        datas.forEach(data => {
-            card.innerHTML+=`       <div class="col-3">
+let card = document.getElementById("main")
+let button1 = document.getElementById("btn1")
+let button2 = document.getElementById("btn2")
+function GetCards() {
+  fetch(`https://api.tvmaze.com/shows`)
+    .then(response => response.json())
+    .then((datas) => {
+      datas.forEach(data => {
+        card.innerHTML += `       <div class="col-3">
             <div class="card" style="width: 18rem; margin-top: 100px;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
@@ -28,47 +28,43 @@ function GetCards(){
                 </div>
               </div>
         </div>`
-        });
+      });
     })
-} 
+}
 GetCards()
 
 
-let Form=document.getElementById("form");
-let SearchInput=document.getElementById("searchInput");
-let formParent=document.getElementById("navbarSupportedContent")
-let InfoInput=document.getElementById("info-input")
-let searchresult=document.getElementById("searchResults")
+let Form = document.getElementById("form");
+let SearchInput = document.getElementById("searchInput");
+let formParent = document.getElementById("navbarSupportedContent")
+let InfoInput = document.getElementById("info-input")
+let searchresult = document.getElementById("searchResults")
 
-Form.addEventListener("submit",ShowCard)
-Form.addEventListener("keyup",ShowCard)
+Form.addEventListener("submit", ShowCard)
+Form.addEventListener("keyup", ShowCard)
 
-SearchInput.addEventListener("keyup",KeyExtention)
-let count=0;
-function KeyExtention(){
-  const inputValue=SearchInput.value.trim()
-  count++
-  // console.log(count);
-  if(count<=3){
-    InfoInput.setAttribute("style","display : block")  
-  }else{
-    InfoInput.setAttribute("style","display : none")  
-  }
-  if(inputValue==""){
-    count=0
+SearchInput.addEventListener("keyup", KeyExtention)
+function KeyExtention() {
+
+  const inputValue = SearchInput.value.trim().toLowerCase()
+  console.log(inputValue.length);
+  if (inputValue.length < 3 && inputValue.length > 0) {
+    InfoInput.setAttribute("style", "display : block; color: #F51414; margin-bottom: 0")
+  } else if (inputValue.length == 0 || inputValue.length > 2) {
+    InfoInput.setAttribute("style", "display : none")
   }
 }
 
-function ShowCard(e){
+function ShowCard(e) {
   e.preventDefault()
-  const inputValue=SearchInput.value.trim().toLowerCase()
+  const inputValue = SearchInput.value.trim().toLowerCase()
   fetch(`https://api.tvmaze.com/shows`)
-    .then(response=>response.json())
-    .then((datas)=>{
-      card.innerHTML=""
-        datas.forEach(data => {
-          if(data.name.toLowerCase().trim().includes(inputValue)){
-            card.innerHTML+=`       <div class="col-3">
+    .then(response => response.json())
+    .then((datas) => {
+      card.innerHTML = ""
+      datas.forEach(data => {
+        if (data.name.toLowerCase().trim().includes(inputValue) && inputValue.length >= 3) {
+          card.innerHTML += `       <div class="col-3">
             <div class="card" style="width: 18rem; margin-top: 100px;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
@@ -90,11 +86,9 @@ function ShowCard(e){
                 </div>
               </div>
         </div>`
-          }else{
-            card.innerHTML=`<p style="color: red; margin-top: 200px">the size of the entered value must be greater than 3</p>`
-          }          
-          inputValue.textContent=""
-        });
+        }
+        inputValue.textContent = ""
+      });
     })
-    
+
 }
