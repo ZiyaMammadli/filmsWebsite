@@ -31,7 +31,7 @@ async function dataTable() {
             <div class="card" style="width: 18rem; margin-top: 80px; height: 700px;   box-shadow: 10px 10px 5px lightgrey;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
-                  <h5 class="card-title">${data["name"]}</h5>
+                  <h4 class="card-title"style="  color: #110A63;text-shadow: 2px 2px 4px grey;">${data["name"]}</h4>
                   <p class="card-text">Premiere: ${data["premiered"]}</p>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -40,11 +40,11 @@ async function dataTable() {
                   <li class="list-group-item">Language: ${data["language"]}</li>
                 </ul>
                 <div class="col-sm card-body" style="display: flex;justify-content: space-between; flex-wrap: wrap">
-                <button class="btn btn-outline-success" id="btn1" type="submit"style="background-color: #DBDCDA;">
-                                <a href="${data["officialSite"]}" style="text-decoration: none; color: black;">Go to website</a>
+                <button class="btn btn-outline-success" id="btn1" type="submit"style="border: 0px;background-color: #D30000">
+                                <a href="${data["officialSite"]}" style="text-decoration: none; color: white;">Go to website</a>
                 </button>
-                <button class="btn btn-outline-success" id="btn2" type="submit" style="background-color: #DBDCDA;">
-                                <a href="detail.html?detailsId=${data.id}" style="text-decoration: none; color: black;">Go to Detail</a>
+                <button class="btn btn-outline-success" id="btn2" type="submit" style="border: 0px;background-color: #018417">
+                                <a href="detail.html?detailsId=${data.id}" style="text-decoration: none; color: white;">Go to Detail</a>
                 </button>
                 </div>
               </div>
@@ -111,7 +111,7 @@ function ShowCard(e) {
             <div class="card" style="width: 18rem; margin-top: 80px; height: 720px; box-shadow: 10px 10px 5px lightgrey;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
-                  <h5 class="card-title">${data["name"]}</h5>
+                  <h5 class="card-title"style="  color: #110A63;text-shadow: 2px 2px 4px grey;">${data["name"]}</h5>
                   <p class="card-text">Premiere: ${data["premiered"]}</p>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -120,11 +120,11 @@ function ShowCard(e) {
                   <li class="list-group-item">Language: ${data["language"]}</li>
                 </ul>
                 <div class="card-body" style="display: flex;justify-content: space-between">
-                <button class="btn btn-outline-success" id="btn1" type="submit"style="background-color: #DBDCDA;">
-                                <a href="${data["officialSite"]}" style="text-decoration: none; color: black;">Go to website</a>
+                <button class="btn btn-outline-success" id="btn1" type="submit"style="border: 0px;background-color: #E70202">
+                                <a href="${data["officialSite"]}" style="text-decoration: none; color: white;">Go to website</a>
                 </button>
-                <button class="btn btn-outline-success" id="btn2" type="submit" style="background-color: #DBDCDA;">
-                                <a href="detail.html?detailsId=${data.id}" style="text-decoration: none; color: black;">Go to Detail</a>
+                <button class="btn btn-outline-success" id="btn2" type="submit" style="border: 0px;background-color: #009B2D">
+                                <a href="detail.html?detailsId=${data.id}" style="text-decoration: none; color: white;">Go to Detail</a>
                 </button>
                 </div>
               </div>
