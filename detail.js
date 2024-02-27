@@ -6,10 +6,10 @@ function Getdata(Id){
     fetch(`https://api.tvmaze.com/shows/${Id}`)
     .then(response=>response.json())
     .then((value)=>{
-            card.innerHTML=`<div class="card mb-3" style="max-width: 900px;">
+            card.innerHTML=`<div class="card mb-3" style="max-width: 1300px;   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding:50px">
                                 <div class="row g-0">
-                                    <div class="col-md-4 style="max-width: 500px;">
-                                        <img src="${value.image.original}" class="img-fluid rounded-start" alt="Sekil tapilmadi"style="width: 390px">
+                                    <div class="col-md-4" style="max-width: 500px; display:flex ; justify-content: center; ">
+                                        <img src="${value.image.original}" class="img-fluid rounded-start" alt="Sekil tapilmadi"style="width: 390px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">

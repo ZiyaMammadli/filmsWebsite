@@ -11,36 +11,11 @@ async function GetCards() {
     .then(response => response.json())
     .then((datas) => {
       productData = datas;
-      // datas.forEach(data => {
-      //   card.innerHTML += `       <div class="col-3">
-      //       <div class="card" style="width: 18rem; margin-top: 100px;">
-      //           <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
-      //           <div class="card-body">
-      //             <h5 class="card-title">${data["name"]}</h5>
-      //             <p class="card-text">Premiere: ${data["premiered"]}</p>
-      //           </div>
-      //           <ul class="list-group list-group-flush">
-      //             <li class="list-group-item">IMDB Rating: ${data.rating.average}</li>
-      //             <li class="list-group-item">Genre: ${data.genres}</li>
-      //             <li class="list-group-item">Language: ${data["language"]}</li>
-      //           </ul>
-      //           <div class="card-body" style="display: flex;justify-content: space-between">
-      //           <button class="btn btn-outline-success" id="btn1" type="submit"style="background-color: #DBDCDA;">
-      //                           <a href="${data["officialSite"]}" style="text-decoration: none; color: black;">Go to website</a>
-      //           </button>
-      //           <button class="btn btn-outline-success" id="btn2" type="submit" style="background-color: #DBDCDA;">
-      //                           <a href="detail.html?detailsId=${data.id}" style="text-decoration: none; color: black;">Go to Detail</a>
-      //           </button>
-      //           </div>
-      //         </div>
-      //   </div>`
-      // });
     })
 }
 
 async function dataTable() {
   await GetCards()
-  console.log(productData);
 
   const pages=[];
   for(let i=0;i<= Math.ceil(productData.length / itemsPerPage); i++){
@@ -52,8 +27,8 @@ async function dataTable() {
   const currentItems=productData.slice(indexOfFisrtPage,indexOfLastPage);
 
   card.innerHTML = currentItems.map(data =>
-    `       <div class="col-3">
-            <div class="card" style="width: 18rem; margin-top: 80px; height: 700px">
+    `       <div class="col-md-3"style="display: flex;flex-wrap:wrap">
+            <div class="card" style="width: 18rem; margin-top: 80px; height: 700px;   box-shadow: 10px 10px 5px lightgrey;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
                   <h5 class="card-title">${data["name"]}</h5>
@@ -64,7 +39,7 @@ async function dataTable() {
                   <li class="list-group-item">Genre: ${data.genres}</li>
                   <li class="list-group-item">Language: ${data["language"]}</li>
                 </ul>
-                <div class="card-body" style="display: flex;justify-content: space-between">
+                <div class="col-sm card-body" style="display: flex;justify-content: space-between; flex-wrap: wrap">
                 <button class="btn btn-outline-success" id="btn1" type="submit"style="background-color: #DBDCDA;">
                                 <a href="${data["officialSite"]}" style="text-decoration: none; color: black;">Go to website</a>
                 </button>
@@ -133,7 +108,7 @@ function ShowCard(e) {
       datas.forEach(data => {
         if (data.name.toLowerCase().trim().includes(inputValue) && inputValue.length >= 3) {
           card.innerHTML += `       <div class="col-3" style="height: 100%">
-            <div class="card" style="width: 18rem; margin-top: 80px; height: 700px">
+            <div class="card" style="width: 18rem; margin-top: 80px; height: 720px; box-shadow: 10px 10px 5px lightgrey;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
                   <h5 class="card-title">${data["name"]}</h5>
