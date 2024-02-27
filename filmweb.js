@@ -3,7 +3,7 @@ let button1 = document.getElementById("btn1")
 let button2 = document.getElementById("btn2")
 
 let productData = [];
-let itemsPerPage=12;
+let itemsPerPage=20;
 let currentPage=1;
 
 async function GetCards() {
@@ -53,7 +53,7 @@ async function dataTable() {
 
   card.innerHTML = currentItems.map(data =>
     `       <div class="col-3">
-            <div class="card" style="width: 18rem; margin-top: 100px;">
+            <div class="card" style="width: 18rem; margin-top: 80px; height: 700px">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
                   <h5 class="card-title">${data["name"]}</h5>
@@ -78,6 +78,28 @@ async function dataTable() {
 }
 dataTable()
 
+const prevButton = document.querySelector("#prev");
+const nextButton = document.querySelector("#next");
+const pageNumberValue = document.querySelector("#page-number")
+
+function prevBTN(){
+  if((currentPage-1)*itemsPerPage){
+    currentPage--;
+    pageNumberValue.value=currentPage;
+    dataTable();
+  }
+}
+
+function nextBTN(){
+  if((currentPage*itemsPerPage)/productData.length){
+    currentPage++;
+    pageNumberValue.value=currentPage;
+    dataTable()
+  }
+}
+
+prevButton.addEventListener("click",prevBTN,false)
+nextButton.addEventListener("click",nextBTN,false)
 
 let Form = document.getElementById("form");
 let SearchInput = document.getElementById("searchInput");
@@ -111,7 +133,7 @@ function ShowCard(e) {
       datas.forEach(data => {
         if (data.name.toLowerCase().trim().includes(inputValue) && inputValue.length >= 3) {
           card.innerHTML += `       <div class="col-3" style="height: 100%">
-            <div class="card" style="width: 18rem; margin-top: 100px;">
+            <div class="card" style="width: 18rem; margin-top: 80px; height: 700px">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
                 <div class="card-body">
                   <h5 class="card-title">${data["name"]}</h5>
@@ -139,23 +161,4 @@ function ShowCard(e) {
 
 }
 
-const prevButton = document.querySelector("#prev");
-const nextButton = document.querySelector("#next");
-const pageNumberValue = document.querySelector("#page-number")
-let startIndex = 0;
-let endIndex = 10;
-let pageNumber = 0;
 
-pageNumberValue.value = pageNumber
-prevButton.addEventListener("click", () => {
-  if (endIndex < 20) {
-    startIndex = 0;
-    endIndex = 10;
-  } else {
-    startIndex -= 10;
-    endIndex -= 10;
-    pageNumber -= 1;
-  }
-  pageNumberValue.value = pageNumber;
-  mapData();
-}); 
