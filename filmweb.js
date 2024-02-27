@@ -38,8 +38,10 @@ let Form=document.getElementById("form");
 let SearchInput=document.getElementById("searchInput");
 let formParent=document.getElementById("navbarSupportedContent")
 let InfoInput=document.getElementById("info-input")
+let searchresult=document.getElementById("searchResults")
 
 Form.addEventListener("submit",ShowCard)
+Form.addEventListener("keyup",ShowCard)
 
 SearchInput.addEventListener("keyup",KeyExtention)
 let count=0;
@@ -66,7 +68,6 @@ function ShowCard(e){
       card.innerHTML=""
         datas.forEach(data => {
           if(data.name.toLowerCase().trim().includes(inputValue)){
-            
             card.innerHTML+=`       <div class="col-3">
             <div class="card" style="width: 18rem; margin-top: 100px;">
                 <img src="${data.image.medium}" class="card-img-top" alt="Sekil tapilmadi">
@@ -89,8 +90,11 @@ function ShowCard(e){
                 </div>
               </div>
         </div>`
-          }
+          }else{
+            card.innerHTML=`<p style="color: red; margin-top: 200px">the size of the entered value must be greater than 3</p>`
+          }          
+          inputValue.textContent=""
         });
     })
-    inputValue.innerHTML=""
+    
 }
