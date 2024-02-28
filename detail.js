@@ -32,10 +32,10 @@ function Getdata(Id){
                                                 <b>Ended: </b>${value.ended}
                                                 </li>
                                             </ul>
-                                            <button class="btn btn-outline-success" type="submit"style="border: 0px;background-color: #E70202">
+                                            <button class="btn btn-outline-success" type="submit" id="btn1" style="border: 0px;background-color: #E70202">
                                             <a href="${value.officialSite}"style="text-decoration: none; color: white;">Go to website</a>
                                             </button>
-                                            <button class="btn btn-outline-success" type="submit"style="border: 0px;background-color: #009B2D">
+                                            <button class="btn btn-outline-success" type="submit" id="btn2" style="border: 0px;background-color: #009B2D">
                                             <a href="http://127.0.0.1:5500/filmweb.html"style="text-decoration: none; color: white;">Go back</a>
                                             </button>
                                         </div>

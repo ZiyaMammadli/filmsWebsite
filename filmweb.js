@@ -20,7 +20,7 @@ async function dataTable() {
   const pages=[];
   for(let i=0;i<= Math.ceil(productData.length / itemsPerPage); i++){
     pages.push(i)
-  }
+  } 
 
   const indexOfLastPage= currentPage * itemsPerPage;
   const indexOfFisrtPage=indexOfLastPage-itemsPerPage;
@@ -56,7 +56,7 @@ dataTable()
 const prevButton = document.querySelector("#prev");
 const nextButton = document.querySelector("#next");
 const pageNumberValue = document.querySelector("#page-number")
-
+pageNumberValue.value=1;
 function prevBTN(){
   if((currentPage-1)*itemsPerPage){
     currentPage--;
@@ -98,10 +98,10 @@ function KeyExtention() {
 }
 
 
-function ShowCard(e) {
+ function ShowCard(e) {
   e.preventDefault()
   const inputValue = SearchInput.value.trim().toLowerCase()
-  fetch(`https://api.tvmaze.com/shows`)
+   fetch(`https://api.tvmaze.com/shows`)
     .then(response => response.json())
     .then((datas) => {
       card.innerHTML = "";
@@ -130,8 +130,9 @@ function ShowCard(e) {
               </div>
         </div>`
         }
-        inputValue.textContent = ""
+       
       });
+      inputValue.length=0;
     })
 
 }
