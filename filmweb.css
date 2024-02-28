@@ -32,3 +32,25 @@
   #btn2:hover{
     background-color: rgb(13, 2, 60)!important;
   }
+  .language{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-left: 10px;
+}
+.language>img{
+    width: 20px !important;
+    height: 13px !important;
+}
+.phone{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.phone_language{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-left: 750px;
+}
